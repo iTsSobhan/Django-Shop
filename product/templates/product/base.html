@@ -1,0 +1,19 @@
+{% load render_partial %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    {% include 'product/header-references.html' %}
+</head>
+<body>
+    {% render_partial 'product.views.header_component' %}
+    {% block content %}{% endblock %}
+    {% include 'product/footer-references.html' %}
+</body>
+</html>

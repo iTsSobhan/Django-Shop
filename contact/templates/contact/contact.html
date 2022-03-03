@@ -1,0 +1,48 @@
+{% extends 'contact/base.html' %}
+{% block title %}
+    تماس با ما
+{% endblock %}
+{% block content %}
+    <div id="contact-page" class="container">
+        <div class="bg">	
+            <div class="row">  	
+                <div class="col-sm-8">
+                    <div class="contact-form">
+                        <h2 class="title text-center">با ما در ارتباط باشیـد</h2>
+                        <div class="status alert alert-success" style="display: none"></div>
+                        <form action="{% url 'contact_us_page' %}" id="main-contact-form" class="contact-form row" method="post">
+                            {% csrf_token %}
+                            {% for field in contact_form %}
+                                <div class="form-group col-md-12">
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    {{ field.errors }}
+                                </div>
+                            {% endfor %}
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-primary pull-right">ارسال</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="contact-info">
+                        <h2 class="title text-center">اطلاعات تماس</h2>
+                        <address>
+                            <p>{{ setting.site_name }}</p>
+                            <p>آدرس : {{ setting.site_address }}</p>
+                            <p>تلفن تماس : {{ setting.site_phone }}</p>
+                            {% if setting.fax %}
+                                <p>فکس : {{ setting.site_fax }}</p>
+                            {% endif %}
+                            {% if setting.email %}
+                                <p style="font-family: tahoma;">ایمیـل : {{ setting.site_email }}</p>
+                            {% endif %}
+                        </address>
+                        </div>
+                    </div>
+                </div>    			
+            </div>  
+        </div>
+    </div>	
+{% endblock %}

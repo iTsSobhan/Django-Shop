@@ -1,0 +1,21 @@
+{% load render_partial %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>
+		{% block title %}{% endblock %}
+	</title>
+	{% include 'home/header-references.html' %}
+</head>
+<body>
+	{% render_partial 'home.views.header_component' %}
+    {% block section %}{% endblock %}
+	{% render_partial 'home.views.footer_component' %}
+	{% include 'home/footer-references.html' %}
+</body>
+</html>
