@@ -24,10 +24,12 @@ SHOP_APPS = [
     'contact.apps.ContactConfig',
     'accounts.apps.AccountsConfig',
     'site_settings.apps.SiteSettingsConfig',
+    'articles.apps.ArticlesConfig',
 ]
 
 EXTERNAL_APPS = [
     'django_render_partial',
+    'sorl.thumbnail',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + SHOP_APPS + EXTERNAL_APPS

@@ -3,7 +3,7 @@ from django.shortcuts import (render , redirect)
 from django.views import View
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
-from django.http import HttpRequest
+from django.http.response import HttpResponse
 from site_settings.models import (SiteSettings , FooterLinkBox)
 from .forms import ContactUsModelForm
 from .models import (ContactUs , UserProfile)
@@ -12,12 +12,12 @@ from .models import (ContactUs , UserProfile)
 
 
 class ContactUsView(View):
-    def get(self , request : HttpRequest):
+    def get(self , request : HttpResponse):
         contact_form = ContactUsModelForm()
         setting : SiteSettings = SiteSettings.objects.filter(is_main_setting = True).first()
         return render(request=request , template_name='contact/contact.html' , context={'contact_form':contact_form,'setting':setting})
 
-    def post(self , request : HttpRequest):
+    def post(self , request : HttpResponse):
         contact_form = ContactUsModelForm(request.POST or None)
         if (contact_form.is_valid()):
             contact_form.save()
@@ -44,12 +44,12 @@ class ProfilesView(ListView):
 
 
 
-def header_component(request : HttpRequest):
+def header_component(request : HttpResponse):
     return render(request=request , template_name='contact/header-component.html' , context={})
 
 
 
-def footer_component(request : HttpRequest):
+def footer_component(request : HttpResponse):
     footer_link_boxes : FooterLinkBox = FooterLinkBox.objects.all()
     setting : SiteSettings = SiteSettings.objects.filter(is_main_setting = True).first()
     for item in footer_link_boxes:

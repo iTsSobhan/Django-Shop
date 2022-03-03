@@ -9,6 +9,7 @@ urlpatterns = [
     path(route='' , view=include('home.urls')),
     path(route='' , view=include('accounts.urls')),
     path(route='products/' , view=include('product.urls')),
+    path(route='articles/' , view=include('articles.urls')),
     path(route='contact-us/' , view=include('contact.urls'))
 ]
 
