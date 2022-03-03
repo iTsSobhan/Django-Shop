@@ -19,4 +19,4 @@ class SliderAdmin(admin.ModelAdmin):
 admin.site.register(SiteSettings)
 admin.site.register(FooterLinkBox)
 admin.site.register(FooterLink , FooterLinkAdmin)
-admin.site.register(Slider , SliderAdmin)
+admin.site.register(Slider , SliderAdmin) 
